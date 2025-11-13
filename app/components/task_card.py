@@ -1,6 +1,7 @@
 import hashlib
 import pickle
 from pathlib import Path
+from typing import Optional
 
 from PySide6.QtCore import QThread, Signal, QFileInfo, QMimeData, Qt, QUrl
 from PySide6.QtGui import QPixmap, QDrag
@@ -277,7 +278,7 @@ class TaskCard(CardWidget, Ui_TaskCard):
                 openFile(f"{self.filePath}/{self.fileName}")
         super().mouseReleaseEvent(e)
 
-    def changeButtonStatus(self, enabled: bool | None = None, icon=None, slot=None):
+    def changeButtonStatus(self, enabled: Optional[bool] = None, icon=None, slot=None):
         if enabled is not None:
             self.pauseButton.setEnabled(enabled)
         if icon:
